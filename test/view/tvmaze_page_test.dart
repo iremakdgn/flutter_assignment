@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_assignment/blocs/tvmaze_bloc/tvmaze_bloc.dart';
 import 'package:flutter_assignment/models/tvmaze_model.dart';
 import 'package:flutter_assignment/view/tvmaze_detail_page.dart';
-import 'package:flutter_assignment/view/tvmaze_list_page.dart';
+import 'package:flutter_assignment/view/tvmaze_list_page/tvmaze_list_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 

@@ -23,7 +23,7 @@ class SearchTextField extends StatelessWidget {
       child: TextFormField(
         autofocus: false,
         controller: _textEditingController,
-        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.white),
+        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.white),
         cursorColor: Colors.white,
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -37,12 +37,11 @@ class SearchTextField extends StatelessWidget {
             ),
             onPressed: () {
               _textEditingController.clear();
-              _newsBloc.add(GetTvMazeList());
-              //_search();
+              _newsBloc.add(GetTvMazeListed());
             },
           ),
         ),
-        onChanged: (query) => _newsBloc.add(GetTvMazeSearch(query)),
+        onChanged: (query) => _newsBloc.add(GetTvMazeSearched(query)),
         textInputAction: TextInputAction.search,
       ),
     );

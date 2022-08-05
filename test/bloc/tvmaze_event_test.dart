@@ -6,13 +6,13 @@ void main() {
   group('TvMazeEvent', () {
     group('GetTvMazeList', () {
       test('supports value comparison', () {
-        expect(GetTvMazeList(), GetTvMazeList());
+        expect(GetTvMazeListed(), GetTvMazeListed());
       });
     });
 
     group('GetTvMazeSearch', () {
       test('supports value comparison', () {
-        expect(const GetTvMazeSearch(query), const GetTvMazeSearch(query));
+        expect(const GetTvMazeSearched(query), const GetTvMazeSearched(query));
       });
     });
   });

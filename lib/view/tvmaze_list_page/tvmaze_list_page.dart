@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_assignment/blocs/tvmaze_bloc/tvmaze_bloc.dart';
 import 'package:flutter_assignment/resources/api_repository.dart';
 import 'package:flutter_assignment/routes.gr.dart';
+import 'package:flutter_assignment/view/tvmaze_list_page/widgets/build_list_card.dart';
 import 'package:flutter_assignment/widgets/search_text_field.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_assignment/models/tvmaze_model.dart';
@@ -19,7 +20,7 @@ class _TvMazePageState extends State<TvMazePage> {
 
   @override
   void initState() {
-    _newsBloc.add(GetTvMazeList());
+    _newsBloc.add(GetTvMazeListed());
     super.initState();
   }
 
@@ -55,7 +56,7 @@ class _TvMazePageState extends State<TvMazePage> {
               } else if (state is TvMazeLoading) {
                 return _buildLoading();
               } else if (state is TvMazeLoaded) {
-                return _buildCard(context, state.tvMazeModel);
+                return BuildListCard(context: context, model: state.tvMazeModel);
               } else if (state is TvMazeError) {
                 return Container();
               } else {
@@ -65,40 +66,6 @@ class _TvMazePageState extends State<TvMazePage> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildCard(BuildContext context, List<TvMazeModel> model) {
-    return ListView.builder(
-      itemCount: model.length,
-      itemBuilder: (context, index) {
-        return GestureDetector(
-          onTap: () => AutoRouter.of(context).push(TvMazeDetailRoute(model: model[index])),
-          child: Container(
-            margin: EdgeInsets.all(8.0),
-            child: Card(
-              child: Container(
-                margin: EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    model[index].image == null
-                        ? Image.asset("assets/no_image.png", height: 250)
-                        : Image.network(
-                            "${model[index].image?.medium}",
-                            height: 250,
-                            fit: BoxFit.fill,
-                          ),
-                    SizedBox(height: 10),
-                    Text("Name: ${model[index].name}"),
-                    Text("Type: ${model[index].type}"),
-                    Text("Language: ${model[index].language}"),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        );
-      },
     );
   }
 

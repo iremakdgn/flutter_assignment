@@ -7,10 +7,10 @@ abstract class TvMazeEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class GetTvMazeList extends TvMazeEvent {}
+class GetTvMazeListed extends TvMazeEvent {}
 
-class GetTvMazeSearch extends TvMazeEvent {
-  const GetTvMazeSearch(this.query);
+class GetTvMazeSearched extends TvMazeEvent {
+  const GetTvMazeSearched(this.query);
   final String query;
 
   @override

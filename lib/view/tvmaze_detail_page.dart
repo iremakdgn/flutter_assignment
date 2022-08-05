@@ -19,11 +19,13 @@ class _TvMazeDetailPageState extends State<TvMazeDetailPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Image.network(
-              "${widget.model.image!.original}",
-              fit: BoxFit.contain,
-              height: 350,
-            ),
+            widget.model.image == null
+                ? Image.asset("assets/no_image.png", height: 250)
+                : Image.network(
+                    "${widget.model.image!.original}",
+                    fit: BoxFit.contain,
+                    height: 350,
+                  ),
             SizedBox(height: 10),
             Text(
               "${widget.model.name}",
